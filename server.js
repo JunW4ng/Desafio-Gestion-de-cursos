@@ -37,7 +37,7 @@ app.get("/cursos", async (_, res) => {
 //? Edita un curso
 app.put("/curso", async (req, res) => {
   const { id, nombre, nivelTecnico, fechaInicio, duracion } = req.body;
-  const data = {id, nombre, nivelTecnico, fechaInicio, duracion}
+  const data = { id, nombre, nivelTecnico, fechaInicio, duracion };
   const respuesta = await updateCourse(Object.values(data));
   res.send(respuesta);
 });
