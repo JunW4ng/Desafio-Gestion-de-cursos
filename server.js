@@ -43,10 +43,12 @@ app.put("/curso", async (req, res) => {
 });
 
 //? Elimina un curso
-app.delete("/curso/:id", (req, res) => {
+app.delete("/curso/:id", async (req, res) => {
   const { id } = req.params;
-  const respuesta = deleteCourse(id);
-  res.send(respuesta);
+  const respuesta = await deleteCourse(id);
+  respuesta > 0
+    ? res.send("Eliminado exitosamente")
+    : res.send("Error al eliminar");
 });
 
 app.listen(port, () => console.log(`Escuchando al puerto ${port}`));
